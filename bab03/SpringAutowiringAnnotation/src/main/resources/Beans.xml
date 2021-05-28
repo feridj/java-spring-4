@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<context:annotation-config />
+
+	<bean id="theTraveler" class="com.tobuku.impl.Traveler">
+		<!-- <constructor-arg ref="car"> </constructor-arg> <property name="car" 
+			ref="car" /> -->
+		<property name="origin" value="Jakarta" />
+		<property name="destination" value="Surabaya" />
+	</bean>
+
+	<bean id="car" class="com.tobuku.impl.Car">
+		<constructor-arg type="java.lang.String">
+			<value>Mercedes-Benz</value>
+		</constructor-arg>
+
+		<constructor-arg type="java.lang.String">
+			<value>S-Class S550 4MATIC</value>
+		</constructor-arg>
+
+		<constructor-arg type="java.lang.String">
+			<value>4.7L V8 Twin Turbocharger</value>
+		</constructor-arg>
+
+		<constructor-arg type="java.lang.String">
+			<value>Automatic 7-Speed</value>
+		</constructor-arg>
+
+		<constructor-arg type="java.lang.String">
+			<value>Gasoline</value>
+		</constructor-arg>
+
+		<property name="motion" value="My human spirit is moving to the future..." />
+	</bean>
+
+	<bean id="theOtherCar" class="com.tobuku.impl.Car">
+		<constructor-arg type="java.lang.String">
+			<value>BMW</value>
+		</constructor-arg>
+		<constructor-arg type="java.lang.String">
+			<value>7 Series 740Li</value>
+		</constructor-arg>
+		<constructor-arg type="java.lang.String">
+			<value>3.0L I6</value>
+		</constructor-arg>
+		<constructor-arg type="java.lang.String">
+			<value>Automatic 8-Speed</value>
+		</constructor-arg>
+		<constructor-arg type="java.lang.String">
+			<value>Gasoline</value>
+		</constructor-arg>
+		<property name="motion"
+			value="I am moving with pleasure. 
+		What an ultimate experience..." />
+	</bean>
+</beans>
