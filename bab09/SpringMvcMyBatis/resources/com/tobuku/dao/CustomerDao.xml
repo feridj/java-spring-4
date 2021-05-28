@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tobuku.dao.CustomerDao">
+
+<cache />
+
+<select id="findAllCustomers" resultType="com.tobuku.service.Customer">
+  SELECT [CUST_ID] as custId
+      ,[FULL_NAME] as fullName
+      ,[ADDRESS] as address
+      ,[EMAIL] as email
+  FROM [CUSTOMER]  
+</select>
+
+<!-- 
+<select id="findByCustomerId" parameterType="int" resultType="com.tobuku.service.Customer">
+    SELECT [CUST_ID] as custId
+      ,[FULL_NAME] as fullName
+      ,[ADDRESS] as address
+      ,[EMAIL] as email
+  FROM [CUSTOMER]
+  WHERE CUST_ID = #{custId}
+</select>
+-->
+  
+<select id="findByCustomerId" parameterType="int" resultType="com.tobuku.service.Customer" statementType="CALLABLE">
+EXEC findByCustomerId @custId = #{custId}
+</select>
+
+<insert id="insert" parameterType="com.tobuku.service.Customer">
+  INSERT INTO [CUSTOMER] ([CUST_ID], [FULL_NAME], [ADDRESS], [EMAIL])
+  VALUES (#{custId}, #{fullName}, #{address}, #{email})
+</insert>	
+
+<update id="update" parameterType="com.tobuku.service.Customer">
+  UPDATE [CUSTOMER]
+  SET [FULL_NAME]=#{fullName}, [ADDRESS]=#{address}, [EMAIL]=#{email}
+  WHERE [CUST_ID] = #{custId}
+</update>	
+
+<delete id="delete" parameterType="int">
+  DELETE [CUSTOMER]
+  WHERE [CUST_ID] = #{custId}
+</delete>
+	
+</mapper> 
